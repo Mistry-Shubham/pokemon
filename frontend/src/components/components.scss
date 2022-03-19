@@ -1,0 +1,52 @@
+// h1 Pokemon Card
+.pokemon-container {
+	background-color: gray;
+	height: 4in;
+	width: 3in;
+	margin: 20px;
+	border-radius: 10px;
+	padding: 10px;
+
+	.type-background {
+		background-color: red;
+		height: 100%;
+		width: 100%;
+		border-radius: 10px;
+		padding: 10px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	h3 {
+		text-transform: capitalize;
+		font-size: 1.6rem;
+	}
+
+	img {
+		width: 100%;
+		height: auto;
+	}
+
+	section {
+		width: 100%;
+		display: grid;
+		grid-template-columns: 0.9fr 1.1fr;
+		background-color: wheat;
+		padding: 8px;
+		border-radius: 5px;
+		box-shadow: 2px 2px 5px black;
+	}
+
+	img.type {
+		height: 30px;
+		width: 30px;
+		margin-left: 5px;
+	}
+
+	p {
+		display: flex;
+		align-items: center;
+		font-size: 1.1rem;
+	}
+}
