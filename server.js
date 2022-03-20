@@ -1,10 +1,15 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
+import { data } from './pokemon.js';
 
 dotenv.config();
 
 const app = express();
+
+app.get('/api/data', (req, res) => {
+	res.json(data);
+});
 
 const __dirname = path.resolve();
 

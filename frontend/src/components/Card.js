@@ -4,9 +4,12 @@ const Card = ({ pokemon }) => {
 	return (
 		<>
 			<div className="pokemon-container">
-				<div className={`type-background ${pokemon.types[0].type.name}`}>
+				<div className={`type-background ${pokemon.types[0]}`}>
 					<h3>{pokemon.name}</h3>
-					<img src={pokemon.sprites.front_default} alt={pokemon.name} />
+					<img
+						src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
+						alt={pokemon.name}
+					/>
 					<section>
 						<p>Height - {pokemon.height}</p>
 						<p>Weight - {pokemon.weight}</p>
@@ -17,15 +20,9 @@ const Card = ({ pokemon }) => {
 								<img
 									key={idx}
 									className="type"
-									title={
-										type.type.name[0].toUpperCase() +
-										type.type.name.substring(1)
-									}
-									alt={
-										type.type.name[0].toUpperCase() +
-										type.type.name.substring(1)
-									}
-									src={`images/${type.type.name}.png`}
+									title={type[0].toUpperCase() + type.substring(1)}
+									alt={type[0].toUpperCase() + type.substring(1)}
+									src={`images/${type}.png`}
 								/>
 							))}
 						</p>

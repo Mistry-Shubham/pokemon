@@ -9,35 +9,26 @@ import './screens.scss';
 const HomeScreen = () => {
 	const dispatch = useDispatch();
 
-	const [apiData, setApiData] = useState([]);
-	const [pokemonData, setPokemonData] = useState([]);
+	const [rawData, setRawData] = useState([]);
 
-	const {
-		loading,
-		apiData: dataApi,
-		error,
-	} = useSelector((state) => state.apiDataFetch);
+	const { loading, pokemonData, error } = useSelector(
+		(state) => state.pokemonDataFetch
+	);
 
 	useEffect(() => {
-		if (dataApi && dataApi.length > 0) {
-			setApiData(dataApi);
-			if (apiData.length > 0) {
-				apiData.forEach((api) => {
-					fetch(api.url)
-						.then((response) => response.json())
-						.then((result) => {
-							setPokemonData((old) => [...old, result]);
-						});
-				});
-			}
-		} else {
-			dispatch(fetchApiData());
-		}
-	}, [dispatch, dataApi]);
+		dispatch(fetchApiData());
+	}, [dispatch]);
+
+	useEffect(() => {
+		setRawData(pokemonData || []);
+	}, [pokemonData]);
 
 	return (
 		<>
-			<div className="main-container">
+			<header>
+				<img src="images/pokemon.png" alt="" />
+			</header>
+			<main className="main-container">
 				<div className="home-screen">
 					{loading ? (
 						<Loader />
@@ -45,13 +36,14 @@ const HomeScreen = () => {
 						<Message>{error}</Message>
 					) : (
 						<div className="card-grid">
-							{pokemonData.map((pokemon, idx) => (
-								<Card key={idx} pokemon={pokemon} />
-							))}
+							{pokemonData &&
+								pokemonData.map((pokemon, idx) => (
+									<Card key={idx} pokemon={pokemon} />
+								))}
 						</div>
 					)}
 				</div>
-			</div>
+			</main>
 		</>
 	);
 };
