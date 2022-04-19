@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchApiData } from '../actions';
 import Card from '../components/Card';
+import Header from '../components/Header';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import './screens.scss';
@@ -25,9 +26,7 @@ const HomeScreen = () => {
 
 	return (
 		<>
-			<header>
-				<img src="images/pokemon.png" alt="" />
-			</header>
+			<Header />
 			<main className="main-container">
 				<div className="home-screen">
 					{loading ? (
