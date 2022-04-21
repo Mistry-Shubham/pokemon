@@ -242,3 +242,65 @@ header {
 		padding-inline: 10px;
 	}
 }
+
+// h1 Dropdown
+
+.dropdown {
+	background-color: rgba(255, 255, 255, 0.9);
+	z-index: 100;
+	position: fixed;
+	width: 80vw;
+	right: 1%;
+	top: 12%;
+	padding: 10px 20px;
+	border-radius: 10px;
+
+	fieldset {
+		padding: 10px 20px;
+		border-radius: 5px;
+		margin-bottom: 20px;
+		border-width: 2px;
+		color: rgba(0, 0, 0, 0.9);
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
+		legend {
+			font-weight: bold;
+			font-size: 1.1rem;
+			letter-spacing: 3px;
+		}
+
+		input {
+			margin-right: 10px;
+		}
+	}
+
+	.buttons {
+		display: flex;
+		justify-content: space-evenly;
+
+		button {
+			padding: 5px 15px;
+			font-size: 1rem;
+			letter-spacing: 2px;
+			border-radius: 50vh;
+			border-width: 1px;
+		}
+
+		.apply {
+			background-color: $white-color;
+
+			&:hover {
+				background-color: $hover-color;
+			}
+		}
+
+		.clear {
+			background-color: $white-color;
+
+			&:hover {
+				background-color: rgba(255, 0, 0, 0.8);
+			}
+		}
+	}
+}
