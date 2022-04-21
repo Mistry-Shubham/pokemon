@@ -24,6 +24,12 @@ export const ContextProvider = ({ children }) => {
 	};
 
 	useEffect(() => {
+		if (filter.type.length === 0 && filter.gen.length === 0) {
+			setFilteredTypeData(backup);
+		}
+	}, [filter, backup]);
+
+	useEffect(() => {
 		if (filter.gen.length > 0) {
 			filter.gen.forEach((item) =>
 				setFilteredGenData((prev) => [
@@ -61,6 +67,39 @@ export const ContextProvider = ({ children }) => {
 	}, [filter, filteredGenData]);
 
 	useEffect(() => {
+		const sortBy = {
+			'A-numerically'() {
+				setRenderData(
+					filteredTypeData.sort((a, b) =>
+						a.id > b.id ? 1 : a.id < b.id ? -1 : 0
+					)
+				);
+			},
+			'D-numerically'() {
+				setRenderData(
+					filteredTypeData.sort((a, b) =>
+						a.id > b.id ? -1 : a.id < b.id ? 1 : 0
+					)
+				);
+			},
+			'A-alphabetically'() {
+				setRenderData(
+					filteredTypeData.sort((a, b) =>
+						a.name > b.name ? 1 : a.name < b.name ? -1 : 0
+					)
+				);
+			},
+			'D-alphabetically'() {
+				setRenderData(
+					filteredTypeData.sort((a, b) =>
+						a.name > b.name ? -1 : a.name < b.name ? 1 : 0
+					)
+				);
+			},
+		};
+
+		sortBy[`${sort}`]();
+
 		if (filter.type.length > 0) {
 			setRenderData(
 				filteredTypeData.filter(
@@ -70,9 +109,7 @@ export const ContextProvider = ({ children }) => {
 		} else {
 			setRenderData(filteredTypeData);
 		}
-	}, [filteredTypeData]);
-
-	console.log(renderData);
+	}, [filteredTypeData, sort, toggle]);
 
 	return (
 		<Contexts.Provider

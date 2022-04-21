@@ -5,6 +5,7 @@ import Contexts from '../Contexts';
 const Dropdown = () => {
 	const [filterType, setFilterType] = useState([]);
 	const [filterGen, setFilterGen] = useState([]);
+	const [sortValue, setSortValue] = useState('');
 
 	const {
 		backup,
@@ -66,6 +67,19 @@ const Dropdown = () => {
 		setFilterType([]);
 		setFilterGen([]);
 		setFilter({ type: [], gen: [] });
+		setToggle({ sort: false, filter: false });
+	};
+
+	const sortApplyHandler = () => {
+		setSort(sortValue);
+		setTimeout(() => {
+			setToggle({ sort: false, filter: false });
+		}, 50);
+	};
+
+	const sortClearHandler = () => {
+		setSortValue('');
+		setSort('A-numerically');
 		setToggle({ sort: false, filter: false });
 	};
 
@@ -164,14 +178,14 @@ const Dropdown = () => {
 										<input
 											type="radio"
 											name="sort"
-											id={item}
+											id={`A-${item}`}
 											defaultChecked={sort === `A-${item}`}
 											value={`A-${item}`}
-											onClick={(e) => setSort(e.target.value)}
+											onClick={(e) => setSortValue(e.target.value)}
 										/>
 										<label
 											style={{ textTransform: 'capitalize' }}
-											htmlFor={item}
+											htmlFor={`A-${item}`}
 										>
 											{item}
 										</label>
@@ -185,14 +199,14 @@ const Dropdown = () => {
 										<input
 											type="radio"
 											name="sort"
-											id={item}
+											id={`D-${item}`}
 											defaultChecked={sort === `D-${item}`}
 											value={`D-${item}`}
-											onClick={(e) => setSort(e.target.value)}
+											onClick={(e) => setSortValue(e.target.value)}
 										/>
 										<label
 											style={{ textTransform: 'capitalize' }}
-											htmlFor={item}
+											htmlFor={`D-${item}`}
 										>
 											{item}
 										</label>
@@ -200,10 +214,18 @@ const Dropdown = () => {
 								))}
 							</fieldset>
 							<div className="buttons">
-								<button type="button" className="apply">
+								<button
+									type="button"
+									className="apply"
+									onClick={sortApplyHandler}
+								>
 									Apply
 								</button>
-								<button type="button" className="clear">
+								<button
+									type="button"
+									className="clear"
+									onClick={sortClearHandler}
+								>
 									Clear
 								</button>
 							</div>
