@@ -304,3 +304,41 @@ header {
 		}
 	}
 }
+
+// h1 Pagination
+.pagination-container {
+	display: flex;
+	justify-content: space-between;
+	padding: 5px 20px;
+	width: 50vw;
+	margin-block: 20px;
+	margin-inline: auto;
+	border-radius: 50vh;
+	background-color: rgba(255, 255, 255, 0.4);
+	box-shadow: 5px 5px 5px black;
+
+	li {
+		font-size: 1.2rem;
+		height: 30px;
+		width: 30px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50%;
+
+		&:hover {
+			cursor: pointer;
+			background-color: $hover-color;
+		}
+	}
+
+	svg {
+		height: 20px;
+		width: 20px;
+		margin-top: 6px;
+	}
+
+	.page-active {
+		background-color: $hover-color;
+	}
+}

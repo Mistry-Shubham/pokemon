@@ -7,14 +7,22 @@ import Header from '../components/Header';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Dropdown from '../components/Dropdown';
+import Pagination from '../components/Pagination';
 import './screens.scss';
 
 const HomeScreen = () => {
 	const dispatch = useDispatch();
 
-	const [rawData, setRawData] = useState([]);
-
 	const { renderData, setRenderData, setBackup } = useContext(Contexts);
+
+	const [rawData, setRawData] = useState([]);
+	const [pageNumber, setPageNumber] = useState(0);
+
+	const cardsPerPage = 60;
+	const pagesVisited = pageNumber * cardsPerPage;
+	const pageCount = Math.ceil(renderData.length / cardsPerPage);
+
+	const pageChangeHandler = ({ selected }) => setPageNumber(selected);
 
 	const { loading, pokemonData, error } = useSelector(
 		(state) => state.pokemonDataFetch
@@ -43,12 +51,13 @@ const HomeScreen = () => {
 					) : (
 						<div className="card-grid">
 							{pokemonData &&
-								renderData.map((pokemon, idx) => (
-									<Card key={idx} pokemon={pokemon} />
-								))}
+								renderData
+									.slice(pagesVisited, pagesVisited + cardsPerPage)
+									.map((pokemon, idx) => <Card key={idx} pokemon={pokemon} />)}
 						</div>
 					)}
 				</div>
+				<Pagination onPageChange={pageChangeHandler} pageCount={pageCount} />
 			</main>
 		</>
 	);
