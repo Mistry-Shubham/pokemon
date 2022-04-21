@@ -111,6 +111,16 @@ export const ContextProvider = ({ children }) => {
 		}
 	}, [filteredTypeData, sort, toggle]);
 
+	useEffect(() => {
+		if (serach.length > 0) {
+			setRenderData(
+				filteredTypeData.filter((item) => item.name.startsWith(serach))
+			);
+		} else {
+			setRenderData(filteredTypeData);
+		}
+	}, [serach]);
+
 	return (
 		<Contexts.Provider
 			value={{

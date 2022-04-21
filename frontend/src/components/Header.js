@@ -3,13 +3,17 @@ import { IoSearchSharp, IoChevronDownSharp } from 'react-icons/io5';
 import Contexts from '../Contexts';
 
 const Header = () => {
-	const { toggle, setToggle } = useContext(Contexts);
+	const { toggle, setToggle, search, setSearch } = useContext(Contexts);
 
 	return (
 		<header>
 			<img src="images/pokemon.png" alt="Pokemon" />
 			<div className="search-box">
-				<input type="text" />
+				<input
+					type="text"
+					value={search}
+					onChange={(e) => setSearch(e.target.value)}
+				/>
 				<IoSearchSharp className="search-icon" />
 			</div>
 			<div className="filters">
