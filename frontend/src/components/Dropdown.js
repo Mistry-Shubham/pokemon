@@ -80,7 +80,9 @@ const Dropdown = () => {
 	const sortClearHandler = () => {
 		setSortValue('');
 		setSort('A-numerically');
-		setToggle({ sort: false, filter: false });
+		setTimeout(() => {
+			setToggle({ sort: false, filter: false });
+		}, 50);
 	};
 
 	return (

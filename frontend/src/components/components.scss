@@ -34,6 +34,7 @@ header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		transition: 0.4s all linear;
 
 		input {
 			background-color: transparent;
@@ -254,6 +255,7 @@ header {
 	top: 12%;
 	padding: 10px 20px;
 	border-radius: 10px;
+	transition: 0.4s all ease-in-out;
 
 	fieldset {
 		padding: 10px 20px;
@@ -340,5 +342,66 @@ header {
 
 	.page-active {
 		background-color: $hover-color;
+	}
+}
+
+@media only screen and (max-width: 1300px) {
+	// h1 Header
+	header {
+		.filters {
+			width: 180px;
+		}
+
+		.search-box {
+			width: 320px;
+		}
+	}
+}
+
+@media only screen and (max-width: 750px) {
+	// h1 Header
+	header {
+		display: block;
+		padding-inline: 0px;
+
+		img {
+			transform: scale(0.8);
+
+			&:hover {
+				transform: scale(0.9);
+			}
+		}
+
+		.filters {
+			position: absolute;
+			top: 18%;
+			right: 6%;
+			transform: translateX(5%);
+
+			div {
+				height: 30px;
+
+				p {
+					font-size: 1rem;
+				}
+			}
+		}
+
+		.search-box {
+			position: absolute;
+			width: 80vw;
+			bottom: 5%;
+			left: 50%;
+			transform: translateX(-50%);
+			height: 30px;
+		}
+	}
+
+	// h1 Dropdown
+	.dropdown {
+		right: auto;
+		top: 18%;
+		left: 50%;
+		transform: translateX(-50%);
 	}
 }
