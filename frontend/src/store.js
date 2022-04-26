@@ -1,10 +1,11 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import { pokemonDataFetchReducer } from './reducers';
+import { pokemonDataFetchReducer, pokemonDataReducer } from './reducers';
 
 const reducer = combineReducers({
 	pokemonDataFetch: pokemonDataFetchReducer,
+	pokemonData: pokemonDataReducer,
 });
 
 const initialState = {};

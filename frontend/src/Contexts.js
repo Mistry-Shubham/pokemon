@@ -2,6 +2,14 @@ import { useState, createContext, useEffect } from 'react';
 
 const Contexts = createContext();
 
+const getWindowDimensions = () => {
+	const { innerWidth: width, innerHeight: height } = window;
+	return {
+		width,
+		height,
+	};
+};
+
 export const ContextProvider = ({ children }) => {
 	const [backup, setBackup] = useState([]);
 	const [renderData, setRenderData] = useState([]);
@@ -11,6 +19,10 @@ export const ContextProvider = ({ children }) => {
 	const [sort, setSort] = useState('A-numerically');
 	const [serach, setSearch] = useState('');
 	const [toggle, setToggle] = useState({ sort: false, filter: false });
+	const [params, setParams] = useState({ state: true, paramId: null });
+	const [windowDimensions, setWindowDimensions] = useState(
+		getWindowDimensions()
+	);
 
 	const gendata = {
 		i: [1, 151],
@@ -121,6 +133,15 @@ export const ContextProvider = ({ children }) => {
 		}
 	}, [serach]);
 
+	useEffect(() => {
+		function handleResize() {
+			setWindowDimensions(getWindowDimensions());
+		}
+
+		window.addEventListener('resize', handleResize);
+		return () => window.removeEventListener('resize', handleResize);
+	}, []);
+
 	return (
 		<Contexts.Provider
 			value={{
@@ -138,6 +159,9 @@ export const ContextProvider = ({ children }) => {
 				setToggle,
 				setFilteredTypeData,
 				setFilteredGenData,
+				params,
+				setParams,
+				windowDimensions,
 			}}
 		>
 			{children}

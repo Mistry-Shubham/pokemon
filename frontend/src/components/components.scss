@@ -77,6 +77,30 @@ header {
 			}
 		}
 	}
+
+	.buttons {
+		display: flex;
+		width: 200px;
+		justify-content: space-evenly;
+
+		button {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 35px;
+			width: 35px;
+			font-size: 1.2rem;
+			padding: 5px;
+			border-radius: 50%;
+			border-width: 0px;
+			background-color: $white-color;
+
+			&:hover {
+				background-color: $hover-color;
+				cursor: pointer;
+			}
+		}
+	}
 }
 
 // h1 Pokemon Card
@@ -345,6 +369,73 @@ header {
 	}
 }
 
+// h1 Evolution
+.evolution-container {
+	background-image: url(../../public/images/bgevolution.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	object-fit: cover;
+	border-radius: 20px;
+	margin-top: 20px;
+	height: fit-content;
+	width: 95%;
+	margin-inline: auto;
+	padding: 20px 30px;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+
+	.form > div {
+		margin: 20px;
+		cursor: pointer;
+	}
+
+	.form.form_2 {
+		height: 1000px;
+		width: 450px;
+	}
+
+	.form {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+
+		.round-container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			border: 2px solid black;
+			border-radius: 50%;
+			height: 160px;
+			width: 160px;
+
+			img {
+				height: 100%;
+				width: 100%;
+			}
+		}
+		h4 {
+			text-transform: capitalize;
+			text-align: center;
+			letter-spacing: 1px;
+			font-size: 1.1rem;
+			background-color: lightgray;
+			padding: 2px;
+			margin-top: 8px;
+			border-radius: 50vh;
+		}
+	}
+
+	.icon {
+		height: 50px;
+		width: 50px;
+	}
+}
+
 @media only screen and (max-width: 1300px) {
 	// h1 Header
 	header {
@@ -361,16 +452,7 @@ header {
 @media only screen and (max-width: 750px) {
 	// h1 Header
 	header {
-		display: block;
-		padding-inline: 0px;
-
-		img {
-			transform: scale(0.8);
-
-			&:hover {
-				transform: scale(0.9);
-			}
-		}
+		display: flex;
 
 		.filters {
 			position: absolute;
@@ -389,10 +471,10 @@ header {
 
 		.search-box {
 			position: absolute;
-			width: 80vw;
-			bottom: 5%;
-			left: 50%;
-			transform: translateX(-50%);
+			width: 50vw;
+			bottom: 10%;
+			right: 6%;
+			transform: translateX(5%);
 			height: 30px;
 		}
 	}
@@ -403,5 +485,31 @@ header {
 		top: 18%;
 		left: 50%;
 		transform: translateX(-50%);
+	}
+}
+
+@media only screen and (max-width: 848px) {
+	// h1 Ecolution
+	.evolution-container {
+		flex-direction: column;
+		padding: 5px;
+
+		.form.form_2 {
+			height: auto;
+			width: auto;
+		}
+
+		.form {
+			flex-direction: row;
+
+			h4 {
+				font-size: 0.8rem;
+			}
+		}
+
+		.round-container {
+			max-height: 110px;
+			max-width: 110px;
+		}
 	}
 }

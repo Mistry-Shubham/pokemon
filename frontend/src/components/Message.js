@@ -1,3 +1,5 @@
+import './components.scss';
+
 const Message = ({ children }) => {
 	return (
 		<div id="error">

@@ -1,3 +1,6 @@
+$white-color: rgba(255, 255, 255, 0.8);
+$hover-color: rgba(255, 230, 0, 0.8);
+
 //h1 Main
 .main-container {
 	position: absolute;
@@ -19,10 +22,207 @@
 			padding: 30px 50px;
 		}
 	}
+
+	// h2 Pokemon Screen
+	.pokemon-screen {
+		padding: 30px 50px;
+		min-height: 100vh;
+
+		.grid {
+			display: grid;
+			grid-template-columns: (0.8fr 2.2fr);
+			gap: 20px;
+
+			.carousel {
+				height: fit-content;
+				width: 300px;
+				overflow: hidden;
+
+				.carousel-slide {
+					height: 300px;
+					width: fit-content;
+					display: flex;
+					transition: 1 ease-in-out;
+
+					img {
+						height: 300px;
+						width: 300px;
+					}
+				}
+
+				.navigator {
+					display: flex;
+					align-items: center;
+					justify-content: space-evenly;
+
+					button {
+						height: 20px;
+						width: 20px;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						border-radius: 50%;
+						border: none;
+						background-color: $white-color;
+
+						&:hover {
+							background-color: $hover-color;
+
+							cursor: pointer;
+						}
+					}
+
+					.dot {
+						height: 15px;
+						width: 15px;
+						border: 1px solid black;
+						border-radius: 50%;
+					}
+
+					.dot.active {
+						background-color: $hover-color;
+					}
+				}
+			}
+
+			.details {
+				padding: 10px;
+
+				h3 {
+					text-transform: capitalize;
+					font-size: 2.5rem;
+					letter-spacing: 2px;
+					font-weight: 600;
+					margin-bottom: 10px;
+				}
+
+				img {
+					height: 40px;
+					width: 40px;
+					margin-right: 20px;
+					box-shadow: 2px 2px 5px black;
+					border-radius: 50%;
+					border-width: 0px;
+					margin-bottom: 10px;
+				}
+
+				section {
+					display: grid;
+					grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+					margin-bottom: 10px;
+
+					p {
+						font-size: 1.2rem;
+					}
+				}
+
+				.abilities {
+					h4 {
+						font-size: 1.2rem;
+						letter-spacing: 1px;
+					}
+
+					div {
+						margin-bottom: 5px;
+					}
+
+					h5 {
+						font-size: 1rem;
+						text-transform: capitalize;
+					}
+
+					p {
+						font-size: 0.9rem;
+					}
+				}
+			}
+		}
+
+		.stats-moves {
+			margin-top: 20px;
+			display: flex;
+			justify-content: space-between;
+
+			.moves-container::-webkit-scrollbar {
+				display: none;
+			}
+
+			.moves-container {
+				max-height: 300px;
+				width: fit-content;
+				border-radius: 10px;
+				min-width: 350px;
+
+				table {
+					border-collapse: collapse;
+					width: 100%;
+
+					th {
+						color: rgba(255, 255, 255, 0.8);
+						letter-spacing: 1px;
+						padding: 2px;
+					}
+
+					td {
+						text-align: center;
+						text-transform: capitalize;
+					}
+
+					thead {
+						background-color: rgba(0, 0, 0, 0.4);
+					}
+
+					tbody tr:nth-child(even),
+					.expense-edit-screen .expense-edit-table tbody tr:nth-child(even) {
+						background-color: rgba(120, 120, 120, 0.2);
+					}
+
+					tbody tr:nth-child(odd),
+					.expense-edit-screen .expense-edit-table tbody tr:nth-child(odd) {
+						background-color: rgba(255, 255, 255, 0.8);
+					}
+				}
+			}
+
+			.recharts-wrapper {
+				overflow: hidden;
+				width: 800px;
+				background-color: whitesmoke;
+				border-radius: 10px;
+
+				span {
+					text-transform: capitalize;
+					margin-right: 5px;
+					letter-spacing: 1px;
+				}
+			}
+		}
+	}
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 850px) {
 	.main-container {
 		padding: 10px;
+
+		// h1 Pokemon Screen
+		.pokemon-screen {
+			padding: 0px;
+
+			.grid {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.stats-moves {
+				flex-direction: column;
+				align-items: center;
+				justify-content: space-between;
+
+				.recharts-wrapper {
+					margin-top: 20px;
+				}
+			}
+		}
 	}
 }

@@ -5,6 +5,7 @@ import {
 	IoArrowForwardSharp,
 	IoCodeWorkingSharp,
 } from 'react-icons/io5';
+import './components.scss';
 
 const Pagination = ({ onPageChange, pageCount }) => {
 	return (

@@ -1,9 +1,15 @@
+import { useNavigate } from 'react-router-dom';
 import './components.scss';
 
 const Card = ({ pokemon }) => {
+	const navigate = useNavigate();
+
 	return (
 		<>
-			<div className="pokemon-container">
+			<div
+				className="pokemon-container"
+				onClick={() => navigate(`/pokemon/${pokemon.id}`)}
+			>
 				<div className={`type-background ${pokemon.types[0]}`}>
 					<h3>{pokemon.name}</h3>
 					<img
