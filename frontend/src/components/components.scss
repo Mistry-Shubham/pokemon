@@ -372,6 +372,7 @@ header {
 // h1 Evolution
 .evolution-container {
 	background-image: url(../../public/images/bgevolution.jpg);
+	position: relative;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -381,10 +382,19 @@ header {
 	height: fit-content;
 	width: 95%;
 	margin-inline: auto;
-	padding: 20px 30px;
+	padding: 40px 30px 20px 30px;
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
+
+	.label {
+		position: absolute;
+		top: 2vw;
+		left: 2vw;
+		font-size: 1.2rem;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+	}
 
 	.form > div {
 		margin: 20px;
@@ -409,6 +419,7 @@ header {
 			justify-content: center;
 			align-items: center;
 			border: 2px solid black;
+			padding: 4px;
 			border-radius: 50%;
 			height: 160px;
 			width: 160px;
@@ -492,7 +503,11 @@ header {
 	// h1 Ecolution
 	.evolution-container {
 		flex-direction: column;
-		padding: 5px;
+		padding: 20px 5px 5px 5px;
+
+		.label {
+			font-size: 1rem;
+		}
 
 		.form.form_2 {
 			height: auto;

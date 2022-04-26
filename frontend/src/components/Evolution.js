@@ -120,8 +120,10 @@ const Evolution = ({ data }) => {
 					))}
 				</div>
 			)}
-			{data2 && data3 && data2.length < 1 && data3.length < 1 && (
-				<h4>No Evolution</h4>
+			{data2 && data3 && data2.length < 1 && data3.length < 1 ? (
+				<h4 className="label">No Evolution</h4>
+			) : (
+				<h4 className="label">Evolutions</h4>
 			)}
 		</div>
 	);

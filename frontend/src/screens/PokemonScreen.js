@@ -29,8 +29,10 @@ const PokemonScreen = () => {
 
 		if (pokemonId < 1) {
 			navigate('/pokemon/898');
+			setParams({ state: false, paramsId: 898 });
 		} else if (pokemonId > 898) {
 			navigate('/pokemon/1');
+			setParams({ state: false, paramsId: 1 });
 		} else {
 			setParams({ state: false, paramsId: +pokemonId });
 		}
