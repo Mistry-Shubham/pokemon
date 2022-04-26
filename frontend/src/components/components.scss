@@ -192,6 +192,10 @@ header {
 		background-image: url(../../public/images/bgfairy.jpg);
 	}
 
+	h3::-webkit-scrollbar {
+		display: none;
+	}
+
 	h3 {
 		text-transform: capitalize;
 		font-size: 1.4rem;
@@ -471,6 +475,7 @@ header {
 	// h1 Header
 	header {
 		display: flex;
+		padding-inline: 15px;
 
 		.filters {
 			position: absolute;
@@ -503,6 +508,11 @@ header {
 		top: 18%;
 		left: 50%;
 		transform: translateX(-50%);
+	}
+
+	// h1 Paginatiom
+	.pagination-container {
+		width: 90vw;
 	}
 }
 
