@@ -13,7 +13,7 @@ import './screens.scss';
 const HomeScreen = () => {
 	const dispatch = useDispatch();
 
-	const { renderData, setRenderData, setBackup, setParams } =
+	const { renderData, setRenderData, setToggle, setBackup, setParams } =
 		useContext(Contexts);
 
 	const [rawData, setRawData] = useState([]);
@@ -41,6 +41,9 @@ const HomeScreen = () => {
 
 	useEffect(() => {
 		setParams({ state: true, paramsId: null });
+		setTimeout(() => {
+			setToggle({ sort: false, filter: false });
+		}, 400);
 	}, []);
 
 	useEffect(() => {
@@ -56,7 +59,10 @@ const HomeScreen = () => {
 	return (
 		<>
 			<Dropdown />
-			<main className="main-container">
+			<main
+				className="main-container"
+				onClick={() => setToggle({ sort: false, filter: false })}
+			>
 				<div className="home-screen">
 					{loading ? (
 						<Loader />
@@ -64,7 +70,7 @@ const HomeScreen = () => {
 						<Message>{error}</Message>
 					) : (
 						<div className="card-grid">
-							{pokemonData &&
+							{renderData &&
 								renderData
 									.slice(pagesVisited, pagesVisited + cardsPerPage)
 									.map((pokemon, idx) => <Card key={idx} pokemon={pokemon} />)}

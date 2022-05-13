@@ -19,15 +19,21 @@ const Header = () => {
 			<img
 				src="/images/pokemon.png"
 				alt="Pokemon"
-				onClick={() => navigate('/')}
+				onClick={() => {
+					navigate('/');
+					setToggle({ sort: false, filter: false });
+				}}
 			/>
 			{params.state ? (
 				<>
-					<div className="search-box">
+					<div
+						className="search-box"
+						onClick={() => setToggle({ sort: false, filter: false })}
+					>
 						<input
 							type="text"
 							value={search}
-							onChange={(e) => setSearch(e.target.value)}
+							onChange={(e) => setSearch(e.target.value.toLowerCase())}
 						/>
 						<IoSearchSharp className="search-icon" />
 					</div>
