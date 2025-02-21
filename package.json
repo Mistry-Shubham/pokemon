@@ -1,27 +1,28 @@
 {
-	"name": "pokemon",
-	"version": "1.0.0",
-	"description": "",
-	"type": "module",
-	"main": "server.js",
-	"scripts": {
-		"start": "node server",
-		"server": "nodemon server",
-		"client": "npm start --prefix frontend",
-		"dev": "concurrently \"npm run server\" \"npm run client\""
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Mistry-Shubham/pokemon.git"
-	},
-	"author": "Shubhm Mistry",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/Mistry-Shubham/pokemon/issues"
-	},
-	"homepage": "https://github.com/Mistry-Shubham/pokemon#readme",
-	"dependencies": {
-		"dotenv": "^16.0.0",
-		"express": "^4.17.3"
-	}
+  "name": "pokemon",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "server": "nodemon server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "npm i && echo build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mistry-Shubham/pokemon.git"
+  },
+  "author": "Shubhm Mistry",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mistry-Shubham/pokemon/issues"
+  },
+  "homepage": "https://github.com/Mistry-Shubham/pokemon#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3"
+  }
 }
